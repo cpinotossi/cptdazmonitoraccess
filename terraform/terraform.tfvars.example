@@ -1,0 +1,86 @@
+# ==============================================================================
+# Example terraform.tfvars - Multi-Subscription Deployment
+# ==============================================================================
+# Copy this file to terraform.tfvars and fill in YOUR values.
+# NEVER commit terraform.tfvars to source control!
+# ==============================================================================
+
+# ==============================================================================
+# Subscription IDs (Required)
+# ==============================================================================
+# Central subscription hosts the Log Analytics Workspace
+# User subscriptions host the Storage Accounts to be monitored
+
+central_subscription_id = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"  # Central LAW subscription
+user1_subscription_id   = "yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy"  # User 1 subscription
+user2_subscription_id   = "zzzzzzzz-zzzz-zzzz-zzzz-zzzzzzzzzzzz"  # User 2 subscription
+
+# ==============================================================================
+# Service Principal Object IDs (Required)
+# ==============================================================================
+# These are the Object IDs (NOT App IDs) of the Service Principals.
+# Get these with: az ad sp show --id <app-id> --query id -o tsv
+
+user1_principal_id = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+user2_principal_id = "yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy"
+
+# ==============================================================================
+# Portal Users (Optional)
+# ==============================================================================
+# Object IDs of Azure AD users for testing via Azure Portal
+# Get with: az ad user show --id user@domain.com --query id -o tsv
+
+portal_user1_object_id = ""  # Leave empty to skip
+portal_user2_object_id = ""  # Leave empty to skip
+
+# ==============================================================================
+# Network Access Control (Optional)
+# ==============================================================================
+# List of public IP addresses allowed to access Storage Accounts.
+# If empty ([]), your current public IP is auto-detected via ifconfig.io.
+
+allowed_ip_addresses = []  # Auto-detect or specify: ["1.2.3.4", "5.6.7.8"]
+
+# ==============================================================================
+# Optional Features
+# ==============================================================================
+# Enable minimal LAW permissions for workspace enumeration only.
+# When false (default), users can only access logs via Storage Account context.
+
+enable_law_minimal_access = false
+
+# ==============================================================================
+# Resource Names (Optional - defaults shown)
+# ==============================================================================
+
+# location                    = "westeurope"
+# central_resource_group_name = "rg-central-monitoring"
+# law_name                    = "law-central-shared"
+# user1_resource_group_name   = "rg-user1-resources"
+# user2_resource_group_name   = "rg-user2-resources"
+
+# ==============================================================================
+# Tags (Optional)
+# ==============================================================================
+
+# tags = {
+#   Environment = "Demo"
+#   Purpose     = "LAW-Access-Control-Test"
+#   ManagedBy   = "Terraform"
+# }
+
+# ==============================================================================
+# Service Principal Credentials - FOR NOTEBOOK TESTING ONLY
+# ==============================================================================
+# These credentials are used by the Jupyter notebook to test access control.
+# They are NOT used by Terraform itself.
+# 
+# Create Service Principals with:
+#   az ad sp create-for-rbac --name "sp-user1-logaccess" --skip-assignment
+#   az ad sp create-for-rbac --name "sp-user2-logaccess" --skip-assignment
+
+tenant_id         = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+sp1_client_id     = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"  # App ID of SP1
+sp1_client_secret = "your-secret-here"
+sp2_client_id     = "yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy"  # App ID of SP2
+sp2_client_secret = "your-secret-here"

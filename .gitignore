@@ -1,0 +1,52 @@
+# ==============================================================================
+# Git Ignore for Azure LAW Resource-Context Access Control Demo
+# ==============================================================================
+
+# Python
+.venv/
+__pycache__/
+*.pyc
+*.pyo
+*.egg-info/
+.eggs/
+dist/
+build/
+
+# Jupyter Notebooks - clear outputs before commit
+.ipynb_checkpoints/
+
+# Terraform
+terraform/.terraform/
+terraform/*.tfstate
+terraform/*.tfstate.*
+terraform/.terraform.lock.hcl
+terraform/tfplan
+
+# Sensitive files - NEVER commit these!
+terraform/terraform.tfvars
+terraform/terraform-single-sub.tfvars
+terraform/sp-*.json
+
+# Azure CLI isolated config directories (contain cached tokens)
+terraform/.azure-sp1/
+terraform/.azure-sp2/
+terraform/.azure-notebook/
+
+# Backup files
+*.bak
+
+# Scripts folder (empty)
+scripts/
+
+# Keep the example file (override above)
+!terraform/terraform.tfvars.example
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo

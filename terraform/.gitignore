@@ -1,0 +1,26 @@
+# Terraform
+.terraform/
+*.tfstate
+*.tfstate.*
+.terraform.lock.hcl
+tfplan
+
+# Azure CLI isolated config directories
+.azure-sp1/
+.azure-sp2/
+.azure-notebook/
+
+# Sensitive files - terraform.tfvars contains secrets!
+terraform.tfvars
+
+# Keep the example file
+!terraform.tfvars.example
+
+# Python
+__pycache__/
+*.py[cod]
+.ipynb_checkpoints/
+
+# OS
+.DS_Store
+Thumbs.db
