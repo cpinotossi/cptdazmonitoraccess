@@ -128,6 +128,9 @@ Here you can change the "Access control mode" if you like, but this is not neede
 1. ✅ Two -resourceId (User1 and User2) logs should be visible
 ![central-law-portal-log](./media/central_law_storagelogs.png)
 
+### Manual Test via Jupyter Notebook
+
+In addtion to the manuel test done via the portal, we also tested via the Service Principal by using a Jupyther Notebook.
 
 ## ⚠️ Important Notes
 
